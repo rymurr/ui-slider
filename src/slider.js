@@ -126,7 +126,11 @@ angular.module('ui.slider', []).value('uiSliderConfig',{}).directive('uiSlider',
                 }, true);
 
                 function destroy() {
+                  try {
                     elm.slider('destroy');
+                  } catch(err) {
+                    console.log('tried and failed to destroy jquery-ui slider');
+                  }
                 }
                 elm.bind('$destroy', destroy);
             };
